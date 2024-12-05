@@ -156,7 +156,7 @@ export default function BusinessScorecard() {
                   <div></div>
                   <div></div>
                   <div className="text-center">
-                    <h2 className="font-semibold">VAM</h2>
+                    <h2 className="font-semibold">Value Acceleration Method</h2>
                   </div>
                   <div></div>
                 </div>
@@ -291,7 +291,7 @@ export default function BusinessScorecard() {
                     { num: 9, label: "Key Client Risk (Y/N)", risk: 2, key: 'keyClientRisk', points: keyClientRiskPoints },
                     { num: 10, label: "Single Channel Risk (Y/N)", risk: 1, key: 'singleChannelRisk', points: singleChannelRiskPoints },
                     { num: 11, label: "Market Risk (Y/N)", risk: 1, key: 'marketRisk', points: marketRiskPoints },
-                    { num: 12, label: "Data (Y/N)", risk: 1, key: 'dataRisk', points: dataRiskPoints },
+                    { num: 12, label: "Data Risk (Y/N)", risk: 1, key: 'dataRisk', points: dataRiskPoints },
                   ].map((item) => (
                     <div key={item.num} className="scorecard-row">
                       <div className="scorecard-number">{item.num}</div>
@@ -339,7 +339,7 @@ export default function BusinessScorecard() {
                 <div className="space-y-2">
                   <div className="scorecard-row">
                     <div className="scorecard-number">14</div>
-                    <div className="scorecard-label">STEP 3: Adjusted Valuation Multiple</div>
+                    <div className="scorecard-label">Adjusted Valuation Multiple</div>
                     <div className="scorecard-input-group">
                       <div className="scorecard-total"></div>
                       <Input disabled value={adjustedValuationMultiple} className="scorecard-input" />
@@ -348,7 +348,7 @@ export default function BusinessScorecard() {
                   </div>
                   <div className="scorecard-row">
                     <div className="scorecard-number">15</div>
-                    <div className="scorecard-label">STEP 4: Current Enterprise Value</div>
+                    <div className="scorecard-label">Current Enterprise Value</div>
                     <div className="scorecard-input-group">
                       <div className="scorecard-total"></div>
                       <Input disabled value={enterpriseValue} className="scorecard-input" />
