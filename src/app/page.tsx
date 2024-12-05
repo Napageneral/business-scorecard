@@ -7,6 +7,24 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
+interface TotalRowProps {
+  number: string;
+  formula: string;
+  value: string;
+}
+
+const TotalRow = ({ number, formula, value }: TotalRowProps) => (
+  <div className="scorecard-row">
+    <div className="scorecard-number">{number}</div>
+    <div className="scorecard-label">TOTAL</div>
+    <div className="scorecard-input-group">
+      <div className="scorecard-total">{formula}</div>
+      <Input disabled value={value} className="scorecard-input" />
+    </div>
+    <div className="scorecard-description"></div>
+  </div>
+);
+
 export default function BusinessScorecard() {
   const [businessName, setBusinessName] = useState("")
   const [baselineValues, setBaselineValues] = useState({
@@ -43,7 +61,7 @@ export default function BusinessScorecard() {
               <Input
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
-                className="w-[200px]"
+                className="h-8 border-2 border-gray-400 rounded-none text-sm"
               />
             </div>
           </div>
@@ -75,33 +93,33 @@ export default function BusinessScorecard() {
               
               {/* Baseline value rows */}
               <div className="space-y-1">
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold text-left pl-2">1</Label>
-                  <Label className="text-left pl-2">Revenue</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
+                <div className="scorecard-row">
+                  <div className="scorecard-number">1</div>
+                  <div className="scorecard-label">Revenue</div>
+                  <div className="scorecard-input-group">
                     <Input
                       placeholder="$0"
                       value={baselineValues.revenue}
                       onChange={(e) => setBaselineValues({ ...baselineValues, revenue: e.target.value })}
-                      className="w-full"
+                      className="scorecard-input"
                     />
-                    <Input disabled className="w-full" />
+                    <Input disabled className="scorecard-input" />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold text-left pl-2">2</Label>
-                  <Label className="text-left pl-2">EBITDA</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
+                <div className="scorecard-row">
+                  <div className="scorecard-number">2</div>
+                  <div className="scorecard-label">EBITDA</div>
+                  <div className="scorecard-input-group">
                     <Input
                       placeholder="$0"
                       value={baselineValues.ebitda}
                       onChange={(e) => setBaselineValues({ ...baselineValues, ebitda: e.target.value })}
-                      className="w-full"
+                      className="scorecard-input"
                     />
-                    <Input disabled className="w-full" />
+                    <Input disabled className="scorecard-input" />
                   </div>
-                  <div className="text-sm text-muted-foreground pl-2">{"<$1M: 1 | $1M-$3M: 2.5 | $5M-10M: 5 | $10M+: 6"}</div>
+                  <div className="scorecard-description">{"<$1M: 1 | $1M-$3M: 2.5 | $5M-10M: 5 | $10M+: 6"}</div>
                 </div>
               </div>
             </div>
@@ -110,75 +128,71 @@ export default function BusinessScorecard() {
             <div>
               <h3 className="font-bold text-sm mb-2">VALUE ADDERS</h3>
               <div className="space-y-2">
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">3</Label>
-                  <Label className="px-2.5">Revenue Growth %</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
+                <div className="scorecard-row">
+                  <div className="scorecard-number">3</div>
+                  <div className="scorecard-label">Revenue Growth %</div>
+                  <div className="scorecard-input-group">
                     <Input
                       value={valueAdders.revenueGrowth}
                       onChange={(e) => setValueAdders({ ...valueAdders, revenueGrowth: e.target.value })}
-                      className="w-full"
+                      className="scorecard-input"
                     />
-                    <Input disabled className="w-full" />
+                    <Input disabled className="scorecard-input" />
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="scorecard-description">
                     0 - 0-30% | 1 - 30-100% | 2 - 100%+
                   </div>
                 </div>
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">4</Label>
-                  <Label>Yrly Revenue Retention %</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
+                <div className="scorecard-row">
+                  <div className="scorecard-number">4</div>
+                  <div className="scorecard-label">Yrly Revenue Retention %</div>
+                  <div className="scorecard-input-group">
                     <Input
                       value={valueAdders.revenueRetention}
                       onChange={(e) => setValueAdders({ ...valueAdders, revenueRetention: e.target.value })}
-                      className="w-full"
+                      className="scorecard-input"
                     />
-                    <Input disabled className="w-full" />
+                    <Input disabled className="scorecard-input" />
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="scorecard-description">
                     0 - {"<80%"} | 2 - {">80%"}
                   </div>
                 </div>
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">5</Label>
-                  <Label>EBITDA Margin</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
+                <div className="scorecard-row">
+                  <div className="scorecard-number">5</div>
+                  <div className="scorecard-label">EBITDA Margin</div>
+                  <div className="scorecard-input-group">
                     <Input
                       value={valueAdders.ebitdaMargin}
                       onChange={(e) => setValueAdders({ ...valueAdders, ebitdaMargin: e.target.value })}
-                      className="w-full"
+                      className="scorecard-input"
                     />
-                    <Input disabled className="w-full" />
+                    <Input disabled className="scorecard-input" />
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="scorecard-description">
                     0 - {"<30%"} | .5 - {"(30%+)"}
                   </div>
                 </div>
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">6</Label>
-                  <Label>LTV:CAC Ratio</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
+                <div className="scorecard-row">
+                  <div className="scorecard-number">6</div>
+                  <div className="scorecard-label">LTV:CAC Ratio</div>
+                  <div className="scorecard-input-group">
                     <Input
                       value={valueAdders.ltvCacRatio}
                       onChange={(e) => setValueAdders({ ...valueAdders, ltvCacRatio: e.target.value })}
-                      className="w-full"
+                      className="scorecard-input"
                     />
-                    <Input disabled className="w-full" />
+                    <Input disabled className="scorecard-input" />
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="scorecard-description">
                     0 - {"<10"} | .5 - {">10"}
                   </div>
                 </div>
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">7</Label>
-                  <Label>TOTAL (3B + 4B + 5B + 6B)</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
-                    <div></div>
-                    <Input disabled value="2" className="w-full" />
-                  </div>
-                  <div></div>
-                </div>
+                <TotalRow 
+                  number="7"
+                  formula="(3B + 4B + 5B + 6B)"
+                  value="2"
+                />
               </div>
             </div>
 
@@ -193,10 +207,10 @@ export default function BusinessScorecard() {
                   { num: 11, label: "Market Risk (Y/N)", risk: 1 },
                   { num: 12, label: "Data (Y/N)", risk: 1 },
                 ].map((item) => (
-                  <div key={item.num} className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                    <Label className="font-semibold px-2.5">{item.num}</Label>
-                    <Label className="px-2.5">{item.label}</Label>
-                    <div className="grid grid-cols-2 gap-2 w-full">
+                  <div key={item.num} className="scorecard-row">
+                    <div className="scorecard-number">{item.num}</div>
+                    <div className="scorecard-label">{item.label}</div>
+                    <div className="scorecard-input-group">
                       <Select
                         value={valueSubtractors[item.label.toLowerCase().split(" ")[0] as keyof typeof valueSubtractors]}
                         onValueChange={(value) =>
@@ -206,7 +220,7 @@ export default function BusinessScorecard() {
                           })
                         }
                       >
-                        <SelectTrigger className="w-full h-8">
+                        <SelectTrigger className="scorecard-input">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -214,22 +228,18 @@ export default function BusinessScorecard() {
                           <SelectItem value="N">N</SelectItem>
                         </SelectContent>
                       </Select>
-                      <Input disabled className="w-full h-8 bg-gray-100" />
+                      <Input disabled className="scorecard-input bg-gray-100" />
                     </div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="scorecard-description">
                       Risk ({item.risk}) | No Risk (0)
                     </div>
                   </div>
                 ))}
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">13</Label>
-                  <Label>TOTAL (8B + 9B + 10B + 11B + 12B)</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
-                    <div></div>
-                    <Input disabled value="6" className="w-full" />
-                  </div>
-                  <div></div>
-                </div>
+                <TotalRow 
+                  number="13"
+                  formula="(8B + 9B + 10B + 11B + 12B)"
+                  value="6"
+                />
               </div>
             </div>
 
@@ -237,23 +247,23 @@ export default function BusinessScorecard() {
             <div>
               <h3 className="font-bold mb-2">VALUATION</h3>
               <div className="space-y-2">
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">14</Label>
-                  <Label className="px-2.5">STEP 3: Adjusted Valuation Multiple</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
-                    <div></div>
-                    <Input disabled value="0" className="w-full" />
+                <div className="scorecard-row">
+                  <div className="scorecard-number">14</div>
+                  <div className="scorecard-label">STEP 3: Adjusted Valuation Multiple</div>
+                  <div className="scorecard-input-group">
+                    <div className="scorecard-total"></div>
+                    <Input disabled value="0" className="scorecard-input" />
                   </div>
-                  <div className="text-sm text-muted-foreground ml-2">= 2B + 7B - 13B</div>
+                  <div className="scorecard-description">= 2B + 7B - 13B</div>
                 </div>
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">15</Label>
-                  <Label className="px-2.5">STEP 4: Current Enterprise Value</Label>
-                  <div className="grid grid-cols-2 gap-2 w-full">
-                    <div></div>
-                    <Input disabled value="0" className="w-full" />
+                <div className="scorecard-row">
+                  <div className="scorecard-number">15</div>
+                  <div className="scorecard-label">STEP 4: Current Enterprise Value</div>
+                  <div className="scorecard-input-group">
+                    <div className="scorecard-total"></div>
+                    <Input disabled value="0" className="scorecard-input" />
                   </div>
-                  <div className="text-sm text-muted-foreground ml-2">= 2A * 14B</div>
+                  <div className="scorecard-description">= 2A * 14B</div>
                 </div>
               </div>
             </div>

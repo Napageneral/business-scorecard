@@ -174,3 +174,51 @@ input {
     font-size: 0.875rem;
   }
 }
+
+/* Remove any duplicate or conflicting input styles and consolidate them */
+@layer components {
+  .scorecard-row {
+    @apply grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center;
+  }
+
+  .scorecard-number {
+    @apply font-semibold text-left pl-2 text-sm;
+  }
+
+  .scorecard-label {
+    @apply text-left pl-2 text-sm;
+  }
+
+  .scorecard-input-group {
+    @apply grid grid-cols-2 gap-2 w-full;
+  }
+
+  .scorecard-input {
+    @apply h-8 border-2 border-gray-400 rounded-none text-sm px-2;
+  }
+
+  .scorecard-description {
+    @apply text-xs text-gray-600 pl-2;
+  }
+
+  .scorecard-total {
+    @apply text-xs text-gray-500 pl-2;
+  }
+
+  /* Style for disabled inputs */
+  .scorecard-input[disabled] {
+    @apply bg-gray-100;
+  }
+
+  /* Style for select triggers to match inputs */
+  .select-trigger {
+    @apply h-8 border-2 border-gray-400 rounded-none text-sm;
+  }
+}
+
+/* Remove duplicate input styles from other layers */
+@layer base {
+  input {
+    @apply h-8 border-2 border-gray-400 rounded-none text-sm px-2;
+  }
+}
