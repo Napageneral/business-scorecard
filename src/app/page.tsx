@@ -51,8 +51,8 @@ export default function BusinessScorecard() {
           <div className="text-center mb-6">
             <h2 className="font-semibold mb-2">VAM</h2>
             <div className="grid grid-cols-2 max-w-md mx-auto">
-              <div className="text-center">COLUMN A</div>
-              <div className="text-center">COLUMN B</div>
+              <div className="text-center font-bold">COLUMN A</div>
+              <div className="text-center font-bold">COLUMN B</div>
             </div>
           </div>
 
@@ -65,6 +65,7 @@ export default function BusinessScorecard() {
                 <Label>Revenue</Label>
                 <div className="grid grid-cols-2 gap-2 w-full">
                   <Input
+                    placeholder="$0"
                     value={baselineValues.revenue}
                     onChange={(e) => setBaselineValues({ ...baselineValues, revenue: e.target.value })}
                     className="w-full"
@@ -78,6 +79,7 @@ export default function BusinessScorecard() {
                 <Label>EBITDA</Label>
                 <div className="grid grid-cols-2 gap-2 w-full">
                   <Input
+                    placeholder="$0"
                     value={baselineValues.ebitda}
                     onChange={(e) => setBaselineValues({ ...baselineValues, ebitda: e.target.value })}
                     className="w-full"

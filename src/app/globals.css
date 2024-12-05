@@ -70,3 +70,45 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Add styles for card headers */
+.card-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6b21a8; /* Purple color */
+  border-bottom: 2px solid #e5e7eb; /* Light gray border */
+}
+
+/* Add styles for section headers */
+.section-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Add styles for labels */
+.label {
+  font-weight: bold;
+}
+
+/* Add styles for inputs */
+.input {
+  border: 1px solid #d1d5db; /* Light gray border */
+  padding: 0.5rem;
+  width: 100%;
+}
+
+/* Add styles for static text */
+.static-text {
+  font-size: 0.875rem;
+  color: #6b7280; /* Muted text color */
+  margin-left: 0.5rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
