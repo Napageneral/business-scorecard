@@ -5,22 +5,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
 
 export default function BusinessScorecard() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
   const [businessName, setBusinessName] = useState("")
-
   const [baselineValues, setBaselineValues] = useState({
     revenue: "",
     ebitda: "",
   })
-
   const [valueAdders, setValueAdders] = useState({
     revenueGrowth: "",
     revenueRetention: "",
     ebitdaMargin: "",
     ltvCacRatio: "",
   })
-
   const [valueSubtractors, setValueSubtractors] = useState({
     keyManRisk: "N",
     keyClientRisk: "N",
@@ -28,6 +29,41 @@ export default function BusinessScorecard() {
     marketRisk: "N",
     dataRisk: "N",
   })
+
+  const handleLogin = () => {
+    if (password === "scorecard2024") {
+      setIsAuthenticated(true)
+      setError("")
+    } else {
+      setError("Incorrect password")
+      setPassword("")
+    }
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <Card className="w-[400px]">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-center text-[#6200EE]">BUSINESS SCORECARD</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label>Password</Label>
+              <Input 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+              />
+            </div>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+            <Button className="w-full" onClick={handleLogin}>Enter</Button>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
 
   const formatCurrency = (value: number | string): string => {
     if (isNaN(value as number) || value === "") return ""
