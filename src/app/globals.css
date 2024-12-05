@@ -180,7 +180,7 @@ input {
 /* Remove any duplicate or conflicting input styles and consolidate them */
 @layer components {
   .scorecard-row {
-    @apply grid grid-cols-[2rem_1fr_400px_2fr] gap-1 items-center min-h-[2rem];
+    @apply grid grid-cols-[2rem_200px_400px_350px] gap-1 items-center min-h-[2rem];
   }
 
   .scorecard-number {
@@ -192,7 +192,7 @@ input {
   }
 
   .scorecard-input-group {
-    @apply grid grid-cols-2 gap-2 w-full;
+    @apply grid grid-cols-2 gap-2;
   }
 
   .scorecard-input {
@@ -262,4 +262,12 @@ input:focus,
   box-shadow: none !important;
   outline: none !important;
   border-color: #333 !important;
+}
+
+.vam-header {
+  @apply text-center font-semibold bg-[#6200EE] text-white border-2 border-gray-400 py-1;
+}
+
+.column-headers {
+  @apply grid grid-cols-2 gap-2 text-center font-bold;
 }

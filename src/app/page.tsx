@@ -133,7 +133,7 @@ export default function BusinessScorecard() {
 
   return (
     <div className="flex justify-center">
-      <div className="w-[1300px] p-10">
+      <div className="w-[1050px] p-10">
         <Card className="w-full">
           <CardHeader className="flex flex-row items-center border-b">
             <div className="flex items-center gap-4 w-full">
@@ -152,25 +152,19 @@ export default function BusinessScorecard() {
             <div className="space-y-2">
               {/* VAM header */}
               <div className="text-center mb-4">
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1">
-                  <div></div>
-                  <div></div>
-                  <div className="text-center">
-                    <h2 className="font-semibold">Value Acceleration Method</h2>
-                  </div>
-                  <div></div>
-                </div>
+                <h2 className="font-semibold">Value Acceleration Method</h2>
               </div>
 
               {/* Baseline Value section with column headers */}
               <div>
-                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
+                <div className="scorecard-row">
                   <div></div>
                   <h3 className="font-bold">BASELINE VALUE</h3>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="text-center font-bold">COLUMN A</div>
-                    <div className="text-center font-bold">COLUMN B</div>
+                  <div className="column-headers">
+                    <div>COLUMN A</div>
+                    <div>COLUMN B</div>
                   </div>
+                  <div></div>
                 </div>
                 
                 {/* Baseline value rows */}
