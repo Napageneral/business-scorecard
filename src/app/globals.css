@@ -178,15 +178,15 @@ input {
 /* Remove any duplicate or conflicting input styles and consolidate them */
 @layer components {
   .scorecard-row {
-    @apply grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center;
+    @apply grid grid-cols-[2rem_1fr_400px_2fr] gap-1 items-center min-h-[2rem];
   }
 
   .scorecard-number {
-    @apply font-semibold text-left pl-2 text-sm;
+    @apply font-semibold text-left pl-2 text-sm w-8;
   }
 
   .scorecard-label {
-    @apply text-left pl-2 text-sm;
+    @apply text-left pl-2 text-sm whitespace-nowrap;
   }
 
   .scorecard-input-group {
