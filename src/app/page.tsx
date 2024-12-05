@@ -29,9 +29,9 @@ export default function BusinessScorecard() {
     dataRisk: "N",
   })
 
-  const formatCurrency = (value) => {
-    if (isNaN(value) || value === "") return ""
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(value)
+  const formatCurrency = (value: number | string): string => {
+    if (isNaN(value as number) || value === "") return ""
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(value as number)
   }
 
   const ebitdaPoints = (() => {
@@ -262,7 +262,7 @@ export default function BusinessScorecard() {
                       <div className="scorecard-label">{item.label}</div>
                       <div className="scorecard-input-group">
                         <Select
-                          value={valueSubtractors[item.key]}
+                          value={valueSubtractors[item.key as keyof typeof valueSubtractors]}
                           onValueChange={(value) =>
                             setValueSubtractors({
                               ...valueSubtractors,
