@@ -146,8 +146,10 @@ input {
   input {
     height: 2rem;
     font-size: 0.875rem;
-    border: 1px solid #999;
-    border-radius: 2px;
+    font-weight: 700; /* Heavier font weight */
+    border: 2px solid #333; /* Heavier border */
+    border-radius: 0; /* No border radius */
+    padding: 0.25rem 0.5rem;
   }
   
   /* Override shadcn defaults */
@@ -195,6 +197,8 @@ input {
 
   .scorecard-input {
     @apply h-8 border-2 border-gray-400 rounded-none text-sm px-2;
+    font-weight: 700; /* Heavier font weight */
+    border-radius: 0; /* No border radius */
   }
 
   .scorecard-description {
@@ -213,6 +217,8 @@ input {
   /* Style for select triggers to match inputs */
   .select-trigger {
     @apply h-8 border-2 border-gray-400 rounded-none text-sm;
+    font-weight: 700; /* Heavier font weight */
+    border-radius: 0; /* No border radius */
   }
 }
 
@@ -221,4 +227,39 @@ input {
   input {
     @apply h-8 border-2 border-gray-400 rounded-none text-sm px-2;
   }
+}
+
+/* Remove any other input styling rules and add these */
+input, 
+.scorecard-input,
+.select-trigger,
+button[role="combobox"] {
+  height: 2rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  border: 2px solid #333 !important;
+  border-radius: 0 !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+/* Override shadcn defaults */
+[role="combobox"] {
+  border-radius: 0 !important;
+}
+
+[cmdk-input] {
+  border-radius: 0 !important;
+}
+
+.select-trigger {
+  border-radius: 0 !important;
+}
+
+/* Remove any box shadows */
+input:focus,
+.scorecard-input:focus,
+.select-trigger:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #333 !important;
 }

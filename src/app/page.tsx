@@ -87,7 +87,7 @@ export default function BusinessScorecard() {
 
   const valueSubtractorsTotal = keyManRiskPoints + keyClientRiskPoints + singleChannelRiskPoints + marketRiskPoints + dataRiskPoints
 
-  const adjustedValuationMultiple = (Number(ebitdaPoints) || 0) + valueAddersTotal - valueSubtractorsTotal
+  const adjustedValuationMultiple = Math.max(0, (Number(ebitdaPoints) || 0) + valueAddersTotal - valueSubtractorsTotal)
 
   const enterpriseValue = (() => {
     const ebitdaValue = parseFloat(baselineValues.ebitda.replace(/[^0-9.-]+/g,""))
