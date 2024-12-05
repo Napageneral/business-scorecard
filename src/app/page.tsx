@@ -29,6 +29,11 @@ export default function BusinessScorecard() {
     dataRisk: "N",
   })
 
+  const formatCurrency = (value) => {
+    if (isNaN(value) || value === "") return ""
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(value)
+  }
+
   const ebitdaPoints = (() => {
     const value = parseFloat(baselineValues.ebitda.replace(/[^0-9.-]+/g,""))
     if (isNaN(value)) return ""
@@ -87,7 +92,7 @@ export default function BusinessScorecard() {
   const enterpriseValue = (() => {
     const ebitdaValue = parseFloat(baselineValues.ebitda.replace(/[^0-9.-]+/g,""))
     if (isNaN(ebitdaValue)) return ""
-    return (ebitdaValue * adjustedValuationMultiple).toFixed(2)
+    return formatCurrency(ebitdaValue * adjustedValuationMultiple)
   })()
 
   return (
@@ -140,11 +145,11 @@ export default function BusinessScorecard() {
                     <div className="scorecard-input-group">
                       <Input
                         placeholder="$0"
-                        value={baselineValues.revenue}
+                        value={formatCurrency(parseFloat(baselineValues.revenue.replace(/[^0-9.-]+/g,"")))}
                         onChange={(e) => setBaselineValues({ ...baselineValues, revenue: e.target.value })}
                         className="scorecard-input"
                       />
-                      <Input disabled className="scorecard-input" />
+                      <Input disabled value={formatCurrency(parseFloat(baselineValues.revenue.replace(/[^0-9.-]+/g,"")))} className="scorecard-input" />
                     </div>
                   </div>
 
@@ -154,7 +159,7 @@ export default function BusinessScorecard() {
                     <div className="scorecard-input-group">
                       <Input
                         placeholder="$0"
-                        value={baselineValues.ebitda}
+                        value={formatCurrency(parseFloat(baselineValues.ebitda.replace(/[^0-9.-]+/g,"")))}
                         onChange={(e) => setBaselineValues({ ...baselineValues, ebitda: e.target.value })}
                         className="scorecard-input"
                       />
