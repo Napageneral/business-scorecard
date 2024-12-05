@@ -186,7 +186,7 @@ input {
   }
 
   .scorecard-label {
-    @apply text-left pl-2 text-sm whitespace-nowrap;
+    @apply text-left pl-2 pr-1 text-sm whitespace-nowrap;
   }
 
   .scorecard-input-group {
