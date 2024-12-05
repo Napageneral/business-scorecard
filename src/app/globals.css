@@ -112,3 +112,21 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+/* Add these styles */
+.card {
+  margin: 0;
+  border-radius: 0;
+}
+
+input {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 2rem;
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.25rem;
+}
