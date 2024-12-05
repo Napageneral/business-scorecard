@@ -37,7 +37,7 @@ export default function BusinessScorecard() {
       <Card className="w-full">
         <CardHeader className="flex flex-row items-center border-b">
           <div className="flex items-center gap-4 w-full">
-            <CardTitle className="text-2xl font-bold text-purple-800">BUSINESS SCORECARD</CardTitle>
+            <CardTitle className="text-2xl font-bold text-[#6200EE]">BUSINESS SCORECARD</CardTitle>
             <div className="flex items-center gap-2">
               <Label>Business Name:</Label>
               <Input
@@ -64,21 +64,20 @@ export default function BusinessScorecard() {
 
             {/* Baseline Value section with column headers */}
             <div>
-              <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+              <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                 <div></div>
                 <h3 className="font-bold">BASELINE VALUE</h3>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="text-center font-bold">COLUMN A</div>
                   <div className="text-center font-bold">COLUMN B</div>
                 </div>
-                <div className="text-sm text-muted-foreground">Baseline Range (for 2B)</div>
               </div>
               
               {/* Baseline value rows */}
               <div className="space-y-1">
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">1</Label>
-                  <Label className="px-2.5">Revenue</Label>
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
+                  <Label className="font-semibold text-left pl-2">1</Label>
+                  <Label className="text-left pl-2">Revenue</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
                     <Input
                       placeholder="$0"
@@ -88,12 +87,11 @@ export default function BusinessScorecard() {
                     />
                     <Input disabled className="w-full" />
                   </div>
-                  <div className="text-sm text-muted-foreground">{"<$1M: 1"}</div>
                 </div>
 
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
-                  <Label className="font-semibold px-2.5">2</Label>
-                  <Label className="px-2.5">EBITDA</Label>
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
+                  <Label className="font-semibold text-left pl-2">2</Label>
+                  <Label className="text-left pl-2">EBITDA</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
                     <Input
                       placeholder="$0"
@@ -103,30 +101,16 @@ export default function BusinessScorecard() {
                     />
                     <Input disabled className="w-full" />
                   </div>
-                  <div className="text-sm text-muted-foreground">$1M-$3M: 2.5</div>
-                </div>
-
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div className="text-sm text-muted-foreground">$5M-10M: 5</div>
-                </div>
-
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div className="text-sm text-muted-foreground">$10M+: 6</div>
+                  <div className="text-sm text-muted-foreground pl-2">{"<$1M: 1 | $1M-$3M: 2.5 | $5M-10M: 5 | $10M+: 6"}</div>
                 </div>
               </div>
             </div>
 
             {/* Value Adders */}
             <div>
-              <h3 className="font-bold mb-2">VALUE ADDERS</h3>
+              <h3 className="font-bold text-sm mb-2">VALUE ADDERS</h3>
               <div className="space-y-2">
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                   <Label className="font-semibold px-2.5">3</Label>
                   <Label className="px-2.5">Revenue Growth %</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
@@ -141,7 +125,7 @@ export default function BusinessScorecard() {
                     0 - 0-30% | 1 - 30-100% | 2 - 100%+
                   </div>
                 </div>
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                   <Label className="font-semibold px-2.5">4</Label>
                   <Label>Yrly Revenue Retention %</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
@@ -156,7 +140,7 @@ export default function BusinessScorecard() {
                     0 - {"<80%"} | 2 - {">80%"}
                   </div>
                 </div>
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                   <Label className="font-semibold px-2.5">5</Label>
                   <Label>EBITDA Margin</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
@@ -171,7 +155,7 @@ export default function BusinessScorecard() {
                     0 - {"<30%"} | .5 - {"(30%+)"}
                   </div>
                 </div>
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                   <Label className="font-semibold px-2.5">6</Label>
                   <Label>LTV:CAC Ratio</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
@@ -186,7 +170,7 @@ export default function BusinessScorecard() {
                     0 - {"<10"} | .5 - {">10"}
                   </div>
                 </div>
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                   <Label className="font-semibold px-2.5">7</Label>
                   <Label>TOTAL (3B + 4B + 5B + 6B)</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
@@ -200,7 +184,7 @@ export default function BusinessScorecard() {
 
             {/* Value Subtractors */}
             <div>
-              <h3 className="font-bold mb-2">VALUE SUBTRACTORS</h3>
+              <h3 className="font-bold text-sm mb-2">VALUE SUBTRACTORS</h3>
               <div className="space-y-2">
                 {[
                   { num: 8, label: "Key Man Risk (Y/N)", risk: 3 },
@@ -209,7 +193,7 @@ export default function BusinessScorecard() {
                   { num: 11, label: "Market Risk (Y/N)", risk: 1 },
                   { num: 12, label: "Data (Y/N)", risk: 1 },
                 ].map((item) => (
-                  <div key={item.num} className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                  <div key={item.num} className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                     <Label className="font-semibold px-2.5">{item.num}</Label>
                     <Label className="px-2.5">{item.label}</Label>
                     <div className="grid grid-cols-2 gap-2 w-full">
@@ -222,7 +206,7 @@ export default function BusinessScorecard() {
                           })
                         }
                       >
-                        <SelectTrigger className="w-full h-10">
+                        <SelectTrigger className="w-full h-8">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -230,14 +214,14 @@ export default function BusinessScorecard() {
                           <SelectItem value="N">N</SelectItem>
                         </SelectContent>
                       </Select>
-                      <Input disabled className="w-full" />
+                      <Input disabled className="w-full h-8 bg-gray-100" />
                     </div>
                     <div className="text-sm text-muted-foreground">
                       Risk ({item.risk}) | No Risk (0)
                     </div>
                   </div>
                 ))}
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                   <Label className="font-semibold px-2.5">13</Label>
                   <Label>TOTAL (8B + 9B + 10B + 11B + 12B)</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
@@ -253,7 +237,7 @@ export default function BusinessScorecard() {
             <div>
               <h3 className="font-bold mb-2">VALUATION</h3>
               <div className="space-y-2">
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                   <Label className="font-semibold px-2.5">14</Label>
                   <Label className="px-2.5">STEP 3: Adjusted Valuation Multiple</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
@@ -262,7 +246,7 @@ export default function BusinessScorecard() {
                   </div>
                   <div className="text-sm text-muted-foreground ml-2">= 2B + 7B - 13B</div>
                 </div>
-                <div className="grid grid-cols-[minmax(auto,max-content)_1fr_400px_2fr] gap-1 items-center">
+                <div className="grid grid-cols-[max-content_1fr_400px_2fr] gap-1 items-center">
                   <Label className="font-semibold px-2.5">15</Label>
                   <Label className="px-2.5">STEP 4: Current Enterprise Value</Label>
                   <div className="grid grid-cols-2 gap-2 w-full">
@@ -283,4 +267,6 @@ export default function BusinessScorecard() {
     </div>
   )
 }
+
+
 
