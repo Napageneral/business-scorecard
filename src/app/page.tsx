@@ -76,7 +76,7 @@ export default function BusinessScorecard() {
     const value = parseFloat(baselineValues.ebitda.replace(/[^0-9.-]+/g,""))
     if (isNaN(value)) return ""
     if (value < 1000000) return 1
-    if (value >= 1000000 && value < 3000000) return 2.5
+    if (value >= 1000000 && value < 5000000) return 2.5
     if (value >= 5000000 && value < 10000000) return 5
     if (value >= 10000000) return 6
     return ""
@@ -99,12 +99,18 @@ export default function BusinessScorecard() {
     return ""
   })()
 
+  const ebitdaMargin = (() => {
+    const revenue = parseFloat(baselineValues.revenue.replace(/[^0-9.-]+/g,""))
+    const ebitda = parseFloat(baselineValues.ebitda.replace(/[^0-9.-]+/g,""))
+    if (isNaN(revenue) || isNaN(ebitda) || revenue === 0) return ""
+    return ((ebitda / revenue) * 100).toFixed(1) + "%"
+  })()
+
   const ebitdaMarginPoints = (() => {
-    const value = parseFloat(valueAdders.ebitdaMargin)
-    if (isNaN(value)) return ""
-    if (value < 30) return 0
-    if (value >= 30) return 0.5
-    return ""
+    const margin = parseFloat(ebitdaMargin)
+    if (isNaN(margin)) return ""
+    if (margin < 30) return 0
+    return 0.5
   })()
 
   const ltvCacRatioPoints = (() => {
@@ -144,7 +150,7 @@ export default function BusinessScorecard() {
     keyClientRisk: "Risk associated with revenue concentration in a small number of clients",
     singleChannelRisk: "Risk associated with dependence on a single sales or distribution channel",
     marketRisk: "Risk associated with market conditions and competition",
-    dataRisk: "Risk associated with data security, privacy, and management"
+    dataRisk: "Risk associated with data management, privacy, and security"
   }
 
   return (
@@ -235,7 +241,7 @@ export default function BusinessScorecard() {
                       />
                       <Input disabled value={ebitdaPoints} className="scorecard-input" />
                     </div>
-                    <div className="scorecard-description">{"<$1M: 1 | $1M-$3M: 2.5 | $5M-10M: 5 | $10M+: 6"}</div>
+                    <div className="scorecard-description">{"<$1M: 1 | $1M-$5M: 2.5 | $5M-$10M: 5 | $10M+: 6"}</div>
                   </div>
                 </div>
               </div>
@@ -314,16 +320,10 @@ export default function BusinessScorecard() {
                       </TooltipProvider>
                     </div>
                     <div className="scorecard-input-group">
-                      <Input
-                        value={valueAdders.ebitdaMargin}
-                        onChange={(e) => setValueAdders({ ...valueAdders, ebitdaMargin: e.target.value })}
-                        className="scorecard-input"
-                      />
+                      <Input disabled value={ebitdaMargin} className="scorecard-input" />
                       <Input disabled value={ebitdaMarginPoints} className="scorecard-input" />
                     </div>
-                    <div className="scorecard-description">
-                      0 - {"<30%"} | .5 - {"(30%+)"}
-                    </div>
+                    <div className="scorecard-description">0 - {"<30%"} | .5 - {"(30%+)"}</div>
                   </div>
                   <div className="scorecard-row">
                     <div className="scorecard-number">6</div>
