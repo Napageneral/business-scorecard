@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { InfoIcon } from "lucide-react"
 
 export default function BusinessScorecard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -131,6 +133,20 @@ export default function BusinessScorecard() {
     return formatCurrency(ebitdaValue * adjustedValuationMultiple)
   })()
 
+  const tooltipContent = {
+    revenue: "Total income generated from all business activities before any deductions",
+    ebitda: "Earnings Before Interest, Taxes, Depreciation, and Amortization - a measure of a company's operating performance",
+    revenueGrowth: "Year-over-year percentage increase in revenue",
+    revenueRetention: "Percentage of recurring revenue retained from the previous period",
+    ebitdaMargin: "EBITDA as a percentage of total revenue",
+    ltvCac: "Lifetime Value to Customer Acquisition Cost ratio - measures the relationship between customer value and acquisition cost",
+    keyManRisk: "Risk associated with the business's dependence on key individuals",
+    keyClientRisk: "Risk associated with revenue concentration in a small number of clients",
+    singleChannelRisk: "Risk associated with dependence on a single sales or distribution channel",
+    marketRisk: "Risk associated with market conditions and competition",
+    dataRisk: "Risk associated with data security, privacy, and management"
+  }
+
   return (
     <div className="flex justify-center">
       <div className="w-[1050px] p-10">
@@ -171,7 +187,19 @@ export default function BusinessScorecard() {
                 <div className="space-y-1">
                   <div className="scorecard-row">
                     <div className="scorecard-number">1</div>
-                    <div className="scorecard-label">Revenue</div>
+                    <div className="scorecard-label flex items-center gap-1">
+                      Revenue
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <InfoIcon className="h-4 w-4 text-gray-400" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">{tooltipContent.revenue}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
                     <div className="scorecard-input-group">
                       <Input
                         placeholder="$0"
@@ -185,7 +213,19 @@ export default function BusinessScorecard() {
 
                   <div className="scorecard-row">
                     <div className="scorecard-number">2</div>
-                    <div className="scorecard-label">EBITDA</div>
+                    <div className="scorecard-label flex items-center gap-1">
+                      EBITDA
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <InfoIcon className="h-4 w-4 text-gray-400" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">{tooltipContent.ebitda}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
                     <div className="scorecard-input-group">
                       <Input
                         placeholder="$0"
@@ -206,7 +246,19 @@ export default function BusinessScorecard() {
                 <div className="space-y-2">
                   <div className="scorecard-row">
                     <div className="scorecard-number">3</div>
-                    <div className="scorecard-label">Revenue Growth %</div>
+                    <div className="scorecard-label flex items-center gap-1">
+                      Revenue Growth %
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <InfoIcon className="h-4 w-4 text-gray-400" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">{tooltipContent.revenueGrowth}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
                     <div className="scorecard-input-group">
                       <Input
                         value={valueAdders.revenueGrowth}
@@ -221,7 +273,19 @@ export default function BusinessScorecard() {
                   </div>
                   <div className="scorecard-row">
                     <div className="scorecard-number">4</div>
-                    <div className="scorecard-label">Yrly Revenue Retention %</div>
+                    <div className="scorecard-label flex items-center gap-1">
+                      Yearly Revenue Retention %
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <InfoIcon className="h-4 w-4 text-gray-400" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">{tooltipContent.revenueRetention}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
                     <div className="scorecard-input-group">
                       <Input
                         value={valueAdders.revenueRetention}
@@ -236,7 +300,19 @@ export default function BusinessScorecard() {
                   </div>
                   <div className="scorecard-row">
                     <div className="scorecard-number">5</div>
-                    <div className="scorecard-label">EBITDA Margin</div>
+                    <div className="scorecard-label flex items-center gap-1">
+                      EBITDA Margin
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <InfoIcon className="h-4 w-4 text-gray-400" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">{tooltipContent.ebitdaMargin}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
                     <div className="scorecard-input-group">
                       <Input
                         value={valueAdders.ebitdaMargin}
@@ -251,7 +327,19 @@ export default function BusinessScorecard() {
                   </div>
                   <div className="scorecard-row">
                     <div className="scorecard-number">6</div>
-                    <div className="scorecard-label">LTV:CAC Ratio</div>
+                    <div className="scorecard-label flex items-center gap-1">
+                      LTV:CAC Ratio
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <InfoIcon className="h-4 w-4 text-gray-400" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="max-w-xs">{tooltipContent.ltvCac}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
                     <div className="scorecard-input-group">
                       <Input
                         value={valueAdders.ltvCacRatio}
@@ -289,7 +377,19 @@ export default function BusinessScorecard() {
                   ].map((item) => (
                     <div key={item.num} className="scorecard-row">
                       <div className="scorecard-number">{item.num}</div>
-                      <div className="scorecard-label">{item.label}</div>
+                      <div className="scorecard-label flex items-center gap-1">
+                        {item.label}
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <InfoIcon className="h-4 w-4 text-gray-400" />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="max-w-xs">{tooltipContent[item.key as keyof typeof tooltipContent]}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
                       <div className="scorecard-input-group">
                         <Select
                           value={valueSubtractors[item.key as keyof typeof valueSubtractors]}

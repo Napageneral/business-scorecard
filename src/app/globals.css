@@ -188,7 +188,7 @@ input {
   }
 
   .scorecard-label {
-    @apply text-left pl-2 pr-1 text-sm whitespace-nowrap;
+    @apply text-left pl-2 pr-1 text-sm whitespace-nowrap flex items-center gap-1;
   }
 
   .scorecard-input-group {
@@ -270,4 +270,8 @@ input:focus,
 
 .column-headers {
   @apply grid grid-cols-2 gap-2 text-center font-bold;
+}
+
+[data-tooltip-content] {
+  @apply text-xs p-2 max-w-[200px];
 }
